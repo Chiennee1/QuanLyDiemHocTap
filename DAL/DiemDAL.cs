@@ -51,7 +51,7 @@ namespace QuanLyDiemHocTap.DAL
                             LEFT JOIN LoaiDiem ld ON d.MaLoaiDiem = ld.MaLoaiDiem
                             WHERE pl.MaLop = @MaLop AND pl.MaHocKy = @MaHocKy AND hs.TrangThai = 1
                             ORDER BY hs.HoTen, ld.HeSo";
-            return DataProvider.ExecuteQuery(query, new object[] { maMonHoc, maHocKy, maLop, maHocKy });
+            return DataProvider.ExecuteQuery(query, new object[] { maMonHoc, maHocKy, maLop });
         }
 
         public static int InsertDiem(int maHS, int maMonHoc, int maHocKy, int maLoaiDiem, decimal diemSo, string ghiChu)

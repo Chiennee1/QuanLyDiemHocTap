@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace DAL
 {
     public class DataProvider
@@ -23,13 +24,20 @@ namespace DAL
 
                 if (parameters != null)
                 {
-                    string[] listPara = query.Split(' ');
+                    //Tìm tất cả parameter names bằng Regex
+                    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"@\w+");
+                    System.Text.RegularExpressions.MatchCollection matches = regex.Matches(query);
+                    // Tạo HashSet để tránh thêm parameter trùng lặp
+                    System.Collections.Generic.HashSet<string> addedParams = new System.Collections.Generic.HashSet<string>();
                     int i = 0;
-                    foreach (string item in listPara)
+                    foreach (System.Text.RegularExpressions.Match match in matches)
                     {
-                        if (item.Contains("@"))
+                        string paramName = match.Value;
+
+                        if (!addedParams.Contains(paramName))
                         {
-                            cmd.Parameters.AddWithValue(item, parameters[i]);
+                            cmd.Parameters.AddWithValue(paramName, parameters[i]);
+                            addedParams.Add(paramName);
                             i++;
                         }
                     }
@@ -51,13 +59,19 @@ namespace DAL
 
                 if (parameters != null)
                 {
-                    string[] listPara = query.Split(' ');
+                    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"@\w+");
+                    System.Text.RegularExpressions.MatchCollection matches = regex.Matches(query);
+                    // Tạo HashSet để tránh thêm parameter trùng lặp
+                    System.Collections.Generic.HashSet<string> addedParams = new System.Collections.Generic.HashSet<string>();
                     int i = 0;
-                    foreach (string item in listPara)
+                    foreach (System.Text.RegularExpressions.Match match in matches)
                     {
-                        if (item.Contains("@"))
+                        string paramName = match.Value;
+
+                        if (!addedParams.Contains(paramName))
                         {
-                            cmd.Parameters.AddWithValue(item, parameters[i]);
+                            cmd.Parameters.AddWithValue(paramName, parameters[i]);
+                            addedParams.Add(paramName);
                             i++;
                         }
                     }
@@ -78,13 +92,20 @@ namespace DAL
 
                 if (parameters != null)
                 {
-                    string[] listPara = query.Split(' ');
+                    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"@\w+");
+                    System.Text.RegularExpressions.MatchCollection matches = regex.Matches(query);
+                    // Tạo HashSet để tránh thêm parameter trùng lặp
+                    System.Collections.Generic.HashSet<string> addedParams = new System.Collections.Generic.HashSet<string>();
                     int i = 0;
-                    foreach (string item in listPara)
+
+                    foreach (System.Text.RegularExpressions.Match match in matches)
                     {
-                        if (item.Contains("@"))
+                        string paramName = match.Value;
+
+                        if (!addedParams.Contains(paramName))
                         {
-                            cmd.Parameters.AddWithValue(item, parameters[i]);
+                            cmd.Parameters.AddWithValue(paramName, parameters[i]);
+                            addedParams.Add(paramName);
                             i++;
                         }
                     }
