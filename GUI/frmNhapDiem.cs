@@ -36,6 +36,20 @@ namespace QuanLyDiemHocTap.GUI
                 btnXoa.Enabled = false;
 
                 isLoading = false;
+                if (cboNamHoc.SelectedValue != null)
+                {
+                    cboNamHoc_SelectedIndexChanged(null, null);
+
+                    if (cboHocKy.SelectedValue != null)
+                    {
+                        cboHocKy_SelectedIndexChanged(null, null);
+
+                        if (cboLop.SelectedValue != null)
+                        {
+                            cboLop_SelectedIndexChanged(null, null);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {

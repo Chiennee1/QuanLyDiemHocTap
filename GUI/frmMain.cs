@@ -34,7 +34,8 @@ namespace QuanLyDiemHocTap.GUI
         // Menu Hệ thống
         private void mnuQuanLyTaiKhoan_Click(object sender, EventArgs e)
         {
-            // Mở form quản lý tài khoản
+           frmQuanLyTaiKhoan frm = new frmQuanLyTaiKhoan();
+            frm.Show();
         }
 
         private void mnuDoiMatKhau_Click(object sender, EventArgs e)

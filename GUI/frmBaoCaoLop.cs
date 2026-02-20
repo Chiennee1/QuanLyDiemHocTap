@@ -8,6 +8,8 @@ namespace QuanLyDiemHocTap.GUI
 {
     public partial class frmBaoCaoLop : Form
     {
+        private bool isLoading = false; // Thêm biến flag
+
         public frmBaoCaoLop()
         {
             InitializeComponent();
@@ -16,7 +18,29 @@ namespace QuanLyDiemHocTap.GUI
 
         private void FrmBaoCaoLop_Load(object sender, EventArgs e)
         {
-            LoadComboBoxes();
+            try
+            {
+                isLoading = true;
+                LoadComboBoxes();
+                isLoading = false;
+
+                // Load cascade các ComboBox con
+                if (cboNamHoc.SelectedValue != null)
+                {
+                    cboNamHoc_SelectedIndexChanged(null, null);
+
+                    if (cboHocKy.SelectedValue != null)
+                    {
+                        cboHocKy_SelectedIndexChanged(null, null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                isLoading = false;
+                MessageBox.Show("Lỗi khi tải form: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadComboBoxes()
@@ -24,45 +48,86 @@ namespace QuanLyDiemHocTap.GUI
             try
             {
                 DataTable dtNamHoc = NamHocBUS.GetAllNamHoc();
-                cboNamHoc.DataSource = dtNamHoc;
-                cboNamHoc.DisplayMember = "TenNamHoc";
-                cboNamHoc.ValueMember = "MaNamHoc";
+                if (dtNamHoc != null && dtNamHoc.Rows.Count > 0)
+                {
+                    cboNamHoc.DataSource = dtNamHoc;
+                    cboNamHoc.DisplayMember = "TenNamHoc";
+                    cboNamHoc.ValueMember = "MaNamHoc";
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu năm học. Vui lòng thêm năm học trước!",
+                        "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi",
+                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void cboNamHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboNamHoc.SelectedValue != null)
+            if (isLoading) return; // Bỏ qua khi đang load
+
+            if (cboNamHoc.SelectedValue != null && cboNamHoc.SelectedValue.GetType() != typeof(DataRowView))
             {
                 try
                 {
                     int maNamHoc = Convert.ToInt32(cboNamHoc.SelectedValue);
                     DataTable dtHocKy = HocKyBUS.GetHocKyByNamHoc(maNamHoc);
-                    cboHocKy.DataSource = dtHocKy;
-                    cboHocKy.DisplayMember = "TenHocKy";
-                    cboHocKy.ValueMember = "MaHocKy";
+
+                    if (dtHocKy != null && dtHocKy.Rows.Count > 0)
+                    {
+                        cboHocKy.DataSource = dtHocKy;
+                        cboHocKy.DisplayMember = "TenHocKy";
+                        cboHocKy.ValueMember = "MaHocKy";
+                    }
+                    else
+                    {
+                        cboHocKy.DataSource = null;
+                        cboLop.DataSource = null;
+                        MessageBox.Show("Năm học này chưa có học kỳ!", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi tải học kỳ: " + ex.Message, "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void cboHocKy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboHocKy.SelectedValue != null)
+            if (isLoading) return; // Bỏ qua khi đang load
+
+            if (cboHocKy.SelectedValue != null && cboHocKy.SelectedValue.GetType() != typeof(DataRowView))
             {
                 try
                 {
                     DataTable dtLop = LopBUS.GetAllLop();
-                    cboLop.DataSource = dtLop;
-                    cboLop.DisplayMember = "TenLop";
-                    cboLop.ValueMember = "MaLop";
+
+                    if (dtLop != null && dtLop.Rows.Count > 0)
+                    {
+                        cboLop.DataSource = dtLop;
+                        cboLop.DisplayMember = "TenLop";
+                        cboLop.ValueMember = "MaLop";
+                    }
+                    else
+                    {
+                        cboLop.DataSource = null;
+                        MessageBox.Show("Chưa có lớp học!", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi tải lớp: " + ex.Message, "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -86,18 +151,42 @@ namespace QuanLyDiemHocTap.GUI
 
                 if (dgvBaoCao.Columns.Count > 0)
                 {
-                    dgvBaoCao.Columns["MaHS"].HeaderText = "Mã HS";
-                    dgvBaoCao.Columns["HoTen"].HeaderText = "Họ và tên";
-                    dgvBaoCao.Columns["DiemTrungBinh"].HeaderText = "Điểm TB";
-                    dgvBaoCao.Columns["TenHanhKiem"].HeaderText = "Hạnh kiểm";
-                    dgvBaoCao.Columns["TenXepLoai"].HeaderText = "Xếp loại";
+                    // Ẩn các cột không cần thiết
+                    if (dgvBaoCao.Columns.Contains("MaXepLoai"))
+                        dgvBaoCao.Columns["MaXepLoai"].Visible = false;
+                    if (dgvBaoCao.Columns.Contains("MaHanhKiem"))
+                        dgvBaoCao.Columns["MaHanhKiem"].Visible = false;
+                    if (dgvBaoCao.Columns.Contains("MaHocKy"))
+                        dgvBaoCao.Columns["MaHocKy"].Visible = false;
+                    if (dgvBaoCao.Columns.Contains("GhiChu"))
+                        dgvBaoCao.Columns["GhiChu"].Visible = false;
 
+                    // Đặt tiêu đề
+                    if (dgvBaoCao.Columns.Contains("MaHS"))
+                        dgvBaoCao.Columns["MaHS"].HeaderText = "Mã HS";
+                    if (dgvBaoCao.Columns.Contains("HoTen"))
+                        dgvBaoCao.Columns["HoTen"].HeaderText = "Họ và tên";
                     if (dgvBaoCao.Columns.Contains("DiemTrungBinh"))
+                    {
+                        dgvBaoCao.Columns["DiemTrungBinh"].HeaderText = "Điểm TB";
                         dgvBaoCao.Columns["DiemTrungBinh"].DefaultCellStyle.Format = "N2";
+                    }
+                    if (dgvBaoCao.Columns.Contains("TenHanhKiem"))
+                        dgvBaoCao.Columns["TenHanhKiem"].HeaderText = "Hạnh kiểm";
+                    if (dgvBaoCao.Columns.Contains("TenXepLoai"))
+                        dgvBaoCao.Columns["TenXepLoai"].HeaderText = "Xếp loại";
+
+                    dgvBaoCao.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
 
                 // Thống kê
                 TinhThongKe(dt);
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Lớp này chưa có kết quả tổng kết!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -155,19 +244,20 @@ namespace QuanLyDiemHocTap.GUI
             }
 
             SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "Excel Files|*.xlsx";
+            saveDialog.Filter = "CSV Files|*.csv";
             saveDialog.Title = "Xuất báo cáo";
-            saveDialog.FileName = $"BaoCaoLop_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+            saveDialog.FileName = $"BaoCaoLop_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    // Xuất Excel đơn giản bằng cách export sang CSV
-                    // Hoặc sử dụng thư viện EPPlus/NPOI cho file Excel thực
                     ExportToExcel(saveDialog.FileName);
-                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo",
+                    MessageBox.Show("Xuất file thành công!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Mở file sau khi xuất
+                    System.Diagnostics.Process.Start(saveDialog.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -180,8 +270,6 @@ namespace QuanLyDiemHocTap.GUI
         private void ExportToExcel(string filePath)
         {
             // Phương pháp đơn giản: Xuất ra CSV (có thể mở bằng Excel)
-            // Để xuất file .xlsx thật, cần cài thư viện EPPlus hoặc NPOI
-
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
             // Header
@@ -218,9 +306,9 @@ namespace QuanLyDiemHocTap.GUI
             sb.AppendLine(lblThongKe.Text);
             sb.AppendLine(lblDiemTBLop.Text);
 
-            // Lưu file
-            System.IO.File.WriteAllText(filePath.Replace(".xlsx", ".csv"),
-                sb.ToString(), System.Text.Encoding.UTF8);
+            // Lưu file với UTF-8 BOM để Excel hiển thị tiếng Việt đúng
+            System.IO.File.WriteAllText(filePath, sb.ToString(),
+                new System.Text.UTF8Encoding(true));
         }
     }
 }
