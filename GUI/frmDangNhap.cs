@@ -86,6 +86,11 @@ namespace QuanLyDiemHocTap.GUI
                 btnDangNhap_Click(sender, e);
             }
         }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     // Class lưu thông tin người dùng hiện tại

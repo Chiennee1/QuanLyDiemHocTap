@@ -28,176 +28,206 @@
 
         private void InitializeComponent()
         {
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.chkHienMatKhau = new System.Windows.Forms.CheckBox();
-            this.txtXacNhanMatKhau = new System.Windows.Forms.TextBox();
-            this.lblXacNhanMatKhau = new System.Windows.Forms.Label();
-            this.txtMatKhauMoi = new System.Windows.Forms.TextBox();
-            this.lblMatKhauMoi = new System.Windows.Forms.Label();
-            this.txtMatKhauCu = new System.Windows.Forms.TextBox();
-            this.lblMatKhauCu = new System.Windows.Forms.Label();
-            this.panelButtons = new System.Windows.Forms.Panel();
-            this.btnHuy = new System.Windows.Forms.Button();
-            this.btnDoiMatKhau = new System.Windows.Forms.Button();
-            this.panelHeader.SuspendLayout();
-            this.panelContent.SuspendLayout();
-            this.panelButtons.SuspendLayout();
-            this.SuspendLayout();
-
+            panelHeader = new Panel();
+            lblTitle = new Label();
+            panelContent = new Panel();
+            chkHienMatKhau = new CheckBox();
+            txtXacNhanMatKhau = new TextBox();
+            lblXacNhanMatKhau = new Label();
+            txtMatKhauMoi = new TextBox();
+            lblMatKhauMoi = new Label();
+            txtMatKhauCu = new TextBox();
+            lblMatKhauCu = new Label();
+            panelButtons = new Panel();
+            btnHuy = new Button();
+            btnDoiMatKhau = new Button();
+            panelHeader.SuspendLayout();
+            panelContent.SuspendLayout();
+            panelButtons.SuspendLayout();
+            SuspendLayout();
+            // 
             // panelHeader
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
-            this.panelHeader.Controls.Add(this.lblTitle);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(450, 60);
-            this.panelHeader.TabIndex = 0;
-
+            // 
+            panelHeader.BackColor = Color.FromArgb(0, 123, 255);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Margin = new Padding(5, 6, 5, 6);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(750, 115);
+            panelHeader.TabIndex = 0;
+            // 
             // lblTitle
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(450, 60);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "ĐỔI MẬT KHẨU";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            // 
+            lblTitle.Dock = DockStyle.Fill;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(0, 0);
+            lblTitle.Margin = new Padding(5, 0, 5, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(750, 115);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "ĐỔI MẬT KHẨU";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // panelContent
-            this.panelContent.Controls.Add(this.chkHienMatKhau);
-            this.panelContent.Controls.Add(this.txtXacNhanMatKhau);
-            this.panelContent.Controls.Add(this.lblXacNhanMatKhau);
-            this.panelContent.Controls.Add(this.txtMatKhauMoi);
-            this.panelContent.Controls.Add(this.lblMatKhauMoi);
-            this.panelContent.Controls.Add(this.txtMatKhauCu);
-            this.panelContent.Controls.Add(this.lblMatKhauCu);
-            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(0, 60);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Padding = new System.Windows.Forms.Padding(30, 20, 30, 20);
-            this.panelContent.Size = new System.Drawing.Size(450, 270);
-            this.panelContent.TabIndex = 1;
-
-            // lblMatKhauCu
-            this.lblMatKhauCu.AutoSize = true;
-            this.lblMatKhauCu.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblMatKhauCu.Location = new System.Drawing.Point(30, 30);
-            this.lblMatKhauCu.Name = "lblMatKhauCu";
-            this.lblMatKhauCu.Size = new System.Drawing.Size(89, 19);
-            this.lblMatKhauCu.TabIndex = 0;
-            this.lblMatKhauCu.Text = "Mật khẩu cũ:";
-
-            // txtMatKhauCu
-            this.txtMatKhauCu.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtMatKhauCu.Location = new System.Drawing.Point(30, 55);
-            this.txtMatKhauCu.Name = "txtMatKhauCu";
-            this.txtMatKhauCu.PasswordChar = '●';
-            this.txtMatKhauCu.Size = new System.Drawing.Size(390, 25);
-            this.txtMatKhauCu.TabIndex = 1;
-
-            // lblMatKhauMoi
-            this.lblMatKhauMoi.AutoSize = true;
-            this.lblMatKhauMoi.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblMatKhauMoi.Location = new System.Drawing.Point(30, 95);
-            this.lblMatKhauMoi.Name = "lblMatKhauMoi";
-            this.lblMatKhauMoi.Size = new System.Drawing.Size(99, 19);
-            this.lblMatKhauMoi.TabIndex = 2;
-            this.lblMatKhauMoi.Text = "Mật khẩu mới:";
-
-            // txtMatKhauMoi
-            this.txtMatKhauMoi.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtMatKhauMoi.Location = new System.Drawing.Point(30, 120);
-            this.txtMatKhauMoi.Name = "txtMatKhauMoi";
-            this.txtMatKhauMoi.PasswordChar = '●';
-            this.txtMatKhauMoi.Size = new System.Drawing.Size(390, 25);
-            this.txtMatKhauMoi.TabIndex = 3;
-
-            // lblXacNhanMatKhau
-            this.lblXacNhanMatKhau.AutoSize = true;
-            this.lblXacNhanMatKhau.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblXacNhanMatKhau.Location = new System.Drawing.Point(30, 160);
-            this.lblXacNhanMatKhau.Name = "lblXacNhanMatKhau";
-            this.lblXacNhanMatKhau.Size = new System.Drawing.Size(136, 19);
-            this.lblXacNhanMatKhau.TabIndex = 4;
-            this.lblXacNhanMatKhau.Text = "Xác nhận mật khẩu:";
-
-            // txtXacNhanMatKhau
-            this.txtXacNhanMatKhau.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtXacNhanMatKhau.Location = new System.Drawing.Point(30, 185);
-            this.txtXacNhanMatKhau.Name = "txtXacNhanMatKhau";
-            this.txtXacNhanMatKhau.PasswordChar = '●';
-            this.txtXacNhanMatKhau.Size = new System.Drawing.Size(390, 25);
-            this.txtXacNhanMatKhau.TabIndex = 5;
-
+            // 
+            panelContent.Controls.Add(chkHienMatKhau);
+            panelContent.Controls.Add(txtXacNhanMatKhau);
+            panelContent.Controls.Add(lblXacNhanMatKhau);
+            panelContent.Controls.Add(txtMatKhauMoi);
+            panelContent.Controls.Add(lblMatKhauMoi);
+            panelContent.Controls.Add(txtMatKhauCu);
+            panelContent.Controls.Add(lblMatKhauCu);
+            panelContent.Dock = DockStyle.Fill;
+            panelContent.Location = new Point(0, 115);
+            panelContent.Margin = new Padding(5, 6, 5, 6);
+            panelContent.Name = "panelContent";
+            panelContent.Padding = new Padding(50, 38, 50, 38);
+            panelContent.Size = new Size(750, 519);
+            panelContent.TabIndex = 1;
+            // 
             // chkHienMatKhau
-            this.chkHienMatKhau.AutoSize = true;
-            this.chkHienMatKhau.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.chkHienMatKhau.Location = new System.Drawing.Point(30, 225);
-            this.chkHienMatKhau.Name = "chkHienMatKhau";
-            this.chkHienMatKhau.Size = new System.Drawing.Size(116, 19);
-            this.chkHienMatKhau.TabIndex = 6;
-            this.chkHienMatKhau.Text = "Hiển thị mật khẩu";
-            this.chkHienMatKhau.UseVisualStyleBackColor = true;
-            this.chkHienMatKhau.CheckedChanged += new System.EventHandler(this.chkHienMatKhau_CheckedChanged);
-
+            // 
+            chkHienMatKhau.AutoSize = true;
+            chkHienMatKhau.Font = new Font("Segoe UI", 9F);
+            chkHienMatKhau.Location = new Point(50, 433);
+            chkHienMatKhau.Margin = new Padding(5, 6, 5, 6);
+            chkHienMatKhau.Name = "chkHienMatKhau";
+            chkHienMatKhau.Size = new Size(178, 29);
+            chkHienMatKhau.TabIndex = 6;
+            chkHienMatKhau.Text = "Hiển thị mật khẩu";
+            chkHienMatKhau.UseVisualStyleBackColor = true;
+            chkHienMatKhau.CheckedChanged += chkHienMatKhau_CheckedChanged;
+            // 
+            // txtXacNhanMatKhau
+            // 
+            txtXacNhanMatKhau.Font = new Font("Segoe UI", 10F);
+            txtXacNhanMatKhau.Location = new Point(50, 356);
+            txtXacNhanMatKhau.Margin = new Padding(5, 6, 5, 6);
+            txtXacNhanMatKhau.Name = "txtXacNhanMatKhau";
+            txtXacNhanMatKhau.PasswordChar = '●';
+            txtXacNhanMatKhau.Size = new Size(647, 34);
+            txtXacNhanMatKhau.TabIndex = 5;
+            // 
+            // lblXacNhanMatKhau
+            // 
+            lblXacNhanMatKhau.AutoSize = true;
+            lblXacNhanMatKhau.Font = new Font("Segoe UI", 10F);
+            lblXacNhanMatKhau.Location = new Point(50, 308);
+            lblXacNhanMatKhau.Margin = new Padding(5, 0, 5, 0);
+            lblXacNhanMatKhau.Name = "lblXacNhanMatKhau";
+            lblXacNhanMatKhau.Size = new Size(181, 28);
+            lblXacNhanMatKhau.TabIndex = 4;
+            lblXacNhanMatKhau.Text = "Xác nhận mật khẩu:";
+            // 
+            // txtMatKhauMoi
+            // 
+            txtMatKhauMoi.Font = new Font("Segoe UI", 10F);
+            txtMatKhauMoi.Location = new Point(50, 231);
+            txtMatKhauMoi.Margin = new Padding(5, 6, 5, 6);
+            txtMatKhauMoi.Name = "txtMatKhauMoi";
+            txtMatKhauMoi.PasswordChar = '●';
+            txtMatKhauMoi.Size = new Size(647, 34);
+            txtMatKhauMoi.TabIndex = 3;
+            txtMatKhauMoi.TextChanged += txtMatKhauMoi_TextChanged;
+            // 
+            // lblMatKhauMoi
+            // 
+            lblMatKhauMoi.AutoSize = true;
+            lblMatKhauMoi.Font = new Font("Segoe UI", 10F);
+            lblMatKhauMoi.Location = new Point(50, 183);
+            lblMatKhauMoi.Margin = new Padding(5, 0, 5, 0);
+            lblMatKhauMoi.Name = "lblMatKhauMoi";
+            lblMatKhauMoi.Size = new Size(137, 28);
+            lblMatKhauMoi.TabIndex = 2;
+            lblMatKhauMoi.Text = "Mật khẩu mới:";
+            // 
+            // txtMatKhauCu
+            // 
+            txtMatKhauCu.Font = new Font("Segoe UI", 10F);
+            txtMatKhauCu.Location = new Point(50, 106);
+            txtMatKhauCu.Margin = new Padding(5, 6, 5, 6);
+            txtMatKhauCu.Name = "txtMatKhauCu";
+            txtMatKhauCu.PasswordChar = '●';
+            txtMatKhauCu.Size = new Size(647, 34);
+            txtMatKhauCu.TabIndex = 1;
+            txtMatKhauCu.TextChanged += txtMatKhauCu_TextChanged;
+            // 
+            // lblMatKhauCu
+            // 
+            lblMatKhauCu.AutoSize = true;
+            lblMatKhauCu.Font = new Font("Segoe UI", 10F);
+            lblMatKhauCu.Location = new Point(50, 58);
+            lblMatKhauCu.Margin = new Padding(5, 0, 5, 0);
+            lblMatKhauCu.Name = "lblMatKhauCu";
+            lblMatKhauCu.Size = new Size(123, 28);
+            lblMatKhauCu.TabIndex = 0;
+            lblMatKhauCu.Text = "Mật khẩu cũ:";
+            // 
             // panelButtons
-            this.panelButtons.Controls.Add(this.btnHuy);
-            this.panelButtons.Controls.Add(this.btnDoiMatKhau);
-            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtons.Location = new System.Drawing.Point(0, 330);
-            this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Padding = new System.Windows.Forms.Padding(30, 10, 30, 20);
-            this.panelButtons.Size = new System.Drawing.Size(450, 70);
-            this.panelButtons.TabIndex = 2;
-
-            // btnDoiMatKhau
-            this.btnDoiMatKhau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
-            this.btnDoiMatKhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDoiMatKhau.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnDoiMatKhau.ForeColor = System.Drawing.Color.White;
-            this.btnDoiMatKhau.Location = new System.Drawing.Point(130, 15);
-            this.btnDoiMatKhau.Name = "btnDoiMatKhau";
-            this.btnDoiMatKhau.Size = new System.Drawing.Size(140, 40);
-            this.btnDoiMatKhau.TabIndex = 0;
-            this.btnDoiMatKhau.Text = "Đổi mật khẩu";
-            this.btnDoiMatKhau.UseVisualStyleBackColor = false;
-            this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
-
+            // 
+            panelButtons.Controls.Add(btnHuy);
+            panelButtons.Controls.Add(btnDoiMatKhau);
+            panelButtons.Dock = DockStyle.Bottom;
+            panelButtons.Location = new Point(0, 634);
+            panelButtons.Margin = new Padding(5, 6, 5, 6);
+            panelButtons.Name = "panelButtons";
+            panelButtons.Padding = new Padding(50, 19, 50, 38);
+            panelButtons.Size = new Size(750, 135);
+            panelButtons.TabIndex = 2;
+            // 
             // btnHuy
-            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(280, 15);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(140, 40);
-            this.btnHuy.TabIndex = 1;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseVisualStyleBackColor = false;
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-
+            // 
+            btnHuy.BackColor = Color.FromArgb(108, 117, 125);
+            btnHuy.FlatStyle = FlatStyle.Flat;
+            btnHuy.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnHuy.ForeColor = Color.White;
+            btnHuy.Location = new Point(467, 29);
+            btnHuy.Margin = new Padding(5, 6, 5, 6);
+            btnHuy.Name = "btnHuy";
+            btnHuy.Size = new Size(233, 77);
+            btnHuy.TabIndex = 1;
+            btnHuy.Text = "Hủy";
+            btnHuy.UseVisualStyleBackColor = false;
+            btnHuy.Click += btnHuy_Click;
+            // 
+            // btnDoiMatKhau
+            // 
+            btnDoiMatKhau.BackColor = Color.FromArgb(0, 123, 255);
+            btnDoiMatKhau.FlatStyle = FlatStyle.Flat;
+            btnDoiMatKhau.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnDoiMatKhau.ForeColor = Color.White;
+            btnDoiMatKhau.Location = new Point(217, 29);
+            btnDoiMatKhau.Margin = new Padding(5, 6, 5, 6);
+            btnDoiMatKhau.Name = "btnDoiMatKhau";
+            btnDoiMatKhau.Size = new Size(233, 77);
+            btnDoiMatKhau.TabIndex = 0;
+            btnDoiMatKhau.Text = "Đổi mật khẩu";
+            btnDoiMatKhau.UseVisualStyleBackColor = false;
+            btnDoiMatKhau.Click += btnDoiMatKhau_Click;
+            // 
             // frmDoiMatKhau
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(450, 400);
-            this.Controls.Add(this.panelContent);
-            this.Controls.Add(this.panelButtons);
-            this.Controls.Add(this.panelHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmDoiMatKhau";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Đổi mật khẩu";
-            this.panelHeader.ResumeLayout(false);
-            this.panelContent.ResumeLayout(false);
-            this.panelContent.PerformLayout();
-            this.panelButtons.ResumeLayout(false);
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(750, 769);
+            Controls.Add(panelContent);
+            Controls.Add(panelButtons);
+            Controls.Add(panelHeader);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(5, 6, 5, 6);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "frmDoiMatKhau";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Đổi mật khẩu";
+            panelHeader.ResumeLayout(false);
+            panelContent.ResumeLayout(false);
+            panelContent.PerformLayout();
+            panelButtons.ResumeLayout(false);
+            ResumeLayout(false);
         }
     }
 }

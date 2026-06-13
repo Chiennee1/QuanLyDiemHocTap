@@ -33,6 +33,7 @@ namespace QuanLyDiemHocTap.BUS
                     Email = row["Email"].ToString(),
                     NgayNhapHoc = Convert.ToDateTime(row["NgayNhapHoc"]),
                     TrangThai = Convert.ToBoolean(row["TrangThai"])
+
                 };
             }
             return null;

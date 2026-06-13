@@ -47,6 +47,8 @@ namespace QuanLyDiemHocTap.GUI
                     dgvHocSinh.Columns["Email"].HeaderText = "Email";
                     dgvHocSinh.Columns["TrangThai"].Visible = false;
                     dgvHocSinh.Columns["NgayNhapHoc"].Visible = false;
+
+
                 }
 
                 lblTongSo.Text = $"Tổng số: {dt.Rows.Count} học sinh";
@@ -140,6 +142,7 @@ namespace QuanLyDiemHocTap.GUI
                 DiaChi = txtDiaChi.Text.Trim(),
                 DienThoai = txtDienThoai.Text.Trim(),
                 Email = txtEmail.Text.Trim()
+
             };
 
             string error;
@@ -232,6 +235,11 @@ namespace QuanLyDiemHocTap.GUI
             }
 
             return true;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

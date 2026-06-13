@@ -33,7 +33,7 @@ namespace QuanLyDiemHocTap.GUI
 
             try
             {
-                if (TaiKhoanBUS.DoiMatKhau(maTaiKhoan, txtMatKhauCu.Text, 
+                if (TaiKhoanBUS.DoiMatKhau(maTaiKhoan, txtMatKhauCu.Text,
                     txtMatKhauMoi.Text, out string error))
                 {
                     MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo",
@@ -57,7 +57,7 @@ namespace QuanLyDiemHocTap.GUI
         private void chkHienMatKhau_CheckedChanged(object sender, EventArgs e)
         {
             char passwordChar = chkHienMatKhau.Checked ? '\0' : '●';
-            
+
             txtMatKhauCu.PasswordChar = passwordChar;
             txtMatKhauMoi.PasswordChar = passwordChar;
             txtXacNhanMatKhau.PasswordChar = passwordChar;
@@ -104,6 +104,16 @@ namespace QuanLyDiemHocTap.GUI
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void txtMatKhauCu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMatKhauMoi_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,7 +31,7 @@ namespace QuanLyDiemHocTap.DAL
         public static int InsertHocSinh(string hoTen, DateTime ngaySinh, string gioiTinh, string diaChi, string dienThoai, string email)
         {
             string query = "INSERT INTO HocSinh (HoTen, NgaySinh, GioiTinh, DiaChi, DienThoai, Email) " +
-                          "VALUES ( @HoTen , @NgaySinh , @GioiTinh , @DiaChi , @DienThoai , @Email )";
+                          "VALUES ( @HoTen , @NgaySinh , @GioiTinh , @DiaChi , @DienThoai , @Email)";
             return DataProvider.ExecuteNonQuery(query, new object[] { hoTen, ngaySinh, gioiTinh, diaChi, dienThoai, email });
         }
 
